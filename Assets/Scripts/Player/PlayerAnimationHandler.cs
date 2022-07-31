@@ -7,7 +7,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     private AnimationHandler animationHandler;
-    private Dictionary<string, Sprite[]> spriteDictionary = new Dictionary<string, Sprite[]>();
+    private Dictionary<animationStates, Sprite[]> spriteDictionary = new();
     public float animWalkSpeed = 4f;
 
     public Sprite[] spritesIdleSide;
@@ -48,14 +48,14 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void SpriteDictionaryInit()
     {
-        spriteDictionary.Add(animationStates.AnimIdleLeft.ToString(),   spritesIdleSide);
-        spriteDictionary.Add(animationStates.AnimIdleRight.ToString(),  spritesIdleSide);
-        spriteDictionary.Add(animationStates.AnimIdleUp.ToString(),     spritesIdleUp);
-        spriteDictionary.Add(animationStates.AnimIdleDown.ToString(),   spritesIdleDown);
-        spriteDictionary.Add(animationStates.AnimWalkLeft.ToString(),   spritesWalkSide);
-        spriteDictionary.Add(animationStates.AnimWalkRight.ToString(),  spritesWalkSide);
-        spriteDictionary.Add(animationStates.AnimWalkUp.ToString(),     spritesWalkUp);
-        spriteDictionary.Add(animationStates.AnimWalkDown.ToString(),   spritesWalkDown);
+        spriteDictionary.Add(animationStates.AnimIdleLeft,   spritesIdleSide);
+        spriteDictionary.Add(animationStates.AnimIdleRight,  spritesIdleSide);
+        spriteDictionary.Add(animationStates.AnimIdleUp,     spritesIdleUp);
+        spriteDictionary.Add(animationStates.AnimIdleDown,   spritesIdleDown);
+        spriteDictionary.Add(animationStates.AnimWalkLeft,   spritesWalkSide);
+        spriteDictionary.Add(animationStates.AnimWalkRight,  spritesWalkSide);
+        spriteDictionary.Add(animationStates.AnimWalkUp,     spritesWalkUp);
+        spriteDictionary.Add(animationStates.AnimWalkDown,   spritesWalkDown);
     }
 
     void ChangeAnimationState(animationStates newState)
@@ -65,7 +65,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         currentState = newState;
         bool flipX = currentState.ToString().Contains("Left");
-        animationHandler.setAnimation(spriteDictionary[currentState.ToString()], 0, animWalkSpeed, true, flipX);
+        animationHandler.setAnimation(spriteDictionary[currentState], 0, animWalkSpeed, true, flipX);
     }
 
     void AnimatePlayer()
