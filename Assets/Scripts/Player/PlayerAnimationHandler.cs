@@ -16,6 +16,9 @@ public class PlayerAnimationHandler : MonoBehaviour
     public Sprite[] spritesWalkSide;
     public Sprite[] spritesWalkUp;
     public Sprite[] spritesWalkDown;
+    public Sprite[] spritesAttackSide;
+    public Sprite[] spritesAttackUp;
+    public Sprite[] spritesAttackDown;
 
     public enum animationStates
     {
@@ -26,7 +29,11 @@ public class PlayerAnimationHandler : MonoBehaviour
         AnimWalkLeft = 4,
         AnimWalkRight = 5,
         AnimWalkUp = 6,
-        AnimWalkDown = 7
+        AnimWalkDown = 7,
+        AnimAttackLeft = 8,
+        AnimAttackRight = 9,
+        AnimAttackUp = 10,
+        AnimAttackDown = 11,
     }
 
     private animationStates currentState = animationStates.AnimIdleRight;

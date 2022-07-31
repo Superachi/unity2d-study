@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rigidBody;
+    private Rigidbody2D rigidBody;
 
     // Movement
     public Vector2 moveDirection;
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateMoveDegrees()
     {
-        moveDegrees = AngleCalculation.getAngle(moveDirection, Vector2.zero);
+        moveDegrees = AngleCalculation.GetAngle(moveDirection, Vector2.zero);
     }
 
     void Start()
