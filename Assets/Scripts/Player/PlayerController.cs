@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     private PlayerShoot playerShoot;
+    public float anglePlayerToMouse;
+    public float cardinalPlayerToMouse;
+    public bool fireButtonPressed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +28,17 @@ public class PlayerController : MonoBehaviour
         // Make it so we don't move faster diagonally
         playerMovement.moveDirection = moveInput.normalized;
 
-        if (Input.GetButtonDown("Fire1")) {
-            Vector2 screenPosition = Input.mousePosition;
-            Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-            playerShoot.CreateBullet(gameObject.transform.position, worldPosition);
+        Vector2 mouseScreenPos = Input.mousePosition;
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        anglePlayerToMouse = AngleCalculation.AngleBetweenPoints(gameObject.transform.position, mouseWorldPos);
+        cardinalPlayerToMouse = AngleCalculation.AngleToCardinal(anglePlayerToMouse);
+
+        if (Input.GetButton("Fire1")) {
+            if (playerShoot.canShoot) playerShoot.Attack(gameObject.transform.position, mouseWorldPos, 0.15f);
+            fireButtonPressed = true;
+        } else
+        {
+            fireButtonPressed = false;
         }
     }
 

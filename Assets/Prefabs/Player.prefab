@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 1529121682367756764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -193,6 +193,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b98fa8b5495654fafedd444d89f16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteArray: []
+  animateOnStart: 0
+  animSpeed: 0
+  animIsLooping: 0
 --- !u!114 &1529121682367756581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animWalkSpeed: 4
+  animAttackSpeed: 10
   spritesIdleSide:
   - {fileID: -700633292, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
   spritesIdleUp:
@@ -221,6 +226,15 @@ MonoBehaviour:
   spritesWalkDown:
   - {fileID: -1469083541, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
   - {fileID: 439944394, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  spritesAttackSide:
+  - {fileID: 1175800743, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: 606954721, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  spritesAttackUp:
+  - {fileID: -438782505, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: -1752851387, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  spritesAttackDown:
+  - {fileID: 1508185610, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: 1470685241, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
 --- !u!114 &-5047279912225232327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,3 +250,5 @@ MonoBehaviour:
   cooldownRemaining: 0
   cooldownSpeed: 0
   bulletPrefab: {fileID: 7916626562871886463, guid: 8f1eb5fef6bfa0749b2950914a5c170b, type: 3}
+  isShooting: 0
+  canShoot: 0

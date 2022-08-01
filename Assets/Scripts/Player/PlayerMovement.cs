@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateMoveDegrees()
     {
-        moveDegrees = AngleCalculation.GetAngle(moveDirection, Vector2.zero);
+        moveDegrees = AngleCalculation.AngleBetweenPoints(Vector2.zero, moveDirection);
     }
 
     void Start()

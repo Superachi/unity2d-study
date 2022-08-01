@@ -15,9 +15,9 @@ public class AngleCalculation : MonoBehaviour
     public const float ANGLE_LEFT = 270;
     public const float ANGLE_UP_LEFT = 315;
 
-    public static float GetAngle(Vector2 pointA, Vector2 pointB)
+    public static float AngleBetweenPoints(Vector2 pointFrom, Vector2 pointTo)
     {
-        Vector2 delta = pointA - pointB;
+        Vector2 delta = pointTo - pointFrom;
         float angleRadians = Mathf.Atan2(delta.x, delta.y);
         float angleDegrees = angleRadians * Mathf.Rad2Deg;
 
@@ -27,6 +27,14 @@ public class AngleCalculation : MonoBehaviour
         }
 
         return angleDegrees;
+    }
+
+    public static float AngleToCardinal(float angle)
+    {
+        if (angle >= 45 && angle < 135) return ANGLE_RIGHT;
+        if (angle >= 135 && angle < 225) return ANGLE_DOWN;
+        if (angle >= 225 && angle < 315) return ANGLE_LEFT;
+        return ANGLE_UP;
     }
 
     public static Vector2 RadianToVector2(float radian)

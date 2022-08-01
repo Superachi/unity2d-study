@@ -35,10 +35,10 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (isFacingDirection)
         {
-            facingDirection = AngleCalculation.GetAngle(moveDirection, Vector2.zero);
+            facingDirection = AngleCalculation.AngleBetweenPoints(Vector2.zero, moveDirection);
         }
 
-        float tempDirection = facingDirection;
+        float tempDirection = facingDirection - 90;
         if (isFacingDiagonally) tempDirection = facingDirection - 45;
 
         Quaternion rotation = Quaternion.AngleAxis(tempDirection, Vector3.back);

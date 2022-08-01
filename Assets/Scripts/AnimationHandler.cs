@@ -52,7 +52,7 @@ public class AnimationHandler : MonoBehaviour
             animSpeed = 0;
         }
 
-        animTimeRemaining -= Time.fixedDeltaTime * animSpeed;
+        animTimeRemaining -= Time.deltaTime * animSpeed;
         if (animTimeRemaining <= 0)
         {
             animTimeRemaining = 1;
@@ -64,7 +64,7 @@ public class AnimationHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Animate();
     }

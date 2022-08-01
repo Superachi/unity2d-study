@@ -5,20 +5,15 @@ using UnityEngine;
 // This class is used to determine what animation to play for a player character
 public class PlayerAnimationHandler : MonoBehaviour
 {
+    private PlayerController playerController;
     private PlayerMovement playerMovement;
+    private PlayerShoot playerShoot;
     private AnimationHandler animationHandler;
     private Dictionary<animationStates, Sprite[]> spriteDictionary = new();
-    public float animWalkSpeed = 4f;
+    private float facingDirection = AngleCalculation.ANGLE_RIGHT;
 
-    public Sprite[] spritesIdleSide;
-    public Sprite[] spritesIdleUp;
-    public Sprite[] spritesIdleDown;
-    public Sprite[] spritesWalkSide;
-    public Sprite[] spritesWalkUp;
-    public Sprite[] spritesWalkDown;
-    public Sprite[] spritesAttackSide;
-    public Sprite[] spritesAttackUp;
-    public Sprite[] spritesAttackDown;
+    public float animWalkSpeed = 4f;
+    public float animAttackSpeed = 4f;
 
     public enum animationStates
     {
@@ -38,10 +33,22 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private animationStates currentState = animationStates.AnimIdleRight;
 
+    public Sprite[] spritesIdleSide;
+    public Sprite[] spritesIdleUp;
+    public Sprite[] spritesIdleDown;
+    public Sprite[] spritesWalkSide;
+    public Sprite[] spritesWalkUp;
+    public Sprite[] spritesWalkDown;
+    public Sprite[] spritesAttackSide;
+    public Sprite[] spritesAttackUp;
+    public Sprite[] spritesAttackDown;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerController = GetComponent<PlayerController>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerShoot = GetComponent<PlayerShoot>();
         animationHandler = GetComponent<AnimationHandler>();
         SpriteDictionaryInit();
     }
@@ -56,21 +63,59 @@ public class PlayerAnimationHandler : MonoBehaviour
         spriteDictionary.Add(animationStates.AnimWalkRight,  spritesWalkSide);
         spriteDictionary.Add(animationStates.AnimWalkUp,     spritesWalkUp);
         spriteDictionary.Add(animationStates.AnimWalkDown,   spritesWalkDown);
+        spriteDictionary.Add(animationStates.AnimAttackLeft,    spritesAttackSide);
+        spriteDictionary.Add(animationStates.AnimAttackRight,   spritesAttackSide);
+        spriteDictionary.Add(animationStates.AnimAttackUp,      spritesAttackUp);
+        spriteDictionary.Add(animationStates.AnimAttackDown,    spritesAttackDown);
     }
 
     void ChangeAnimationState(animationStates newState)
     {
         // If already playing the animation, don't have it interrupt itself
         if (currentState == newState) return;
-
         currentState = newState;
-        bool flipX = currentState.ToString().Contains("Left");
-        animationHandler.setAnimation(spriteDictionary[currentState], 0, animWalkSpeed, true, flipX);
+        SetAnimationParams();
     }
 
-    void AnimatePlayer()
+    void SetAnimationParams()
     {
-        switch (playerMovement.moveDegrees)
+        float animSpeed = animWalkSpeed;
+        if (currentState.ToString().Contains("Attack"))
+        {
+            animSpeed = animAttackSpeed;
+        }
+
+        bool flipX = currentState.ToString().Contains("Left");
+        animationHandler.setAnimation(spriteDictionary[currentState], 0, animSpeed, true, flipX);
+    }
+
+    void ControlAnimation()
+    {
+        if (playerShoot.isShooting) facingDirection = playerController.cardinalPlayerToMouse;
+        else if (playerMovement.isMoving) facingDirection = playerMovement.moveDegrees;
+
+        if (playerShoot.isShooting)
+        {
+            switch (facingDirection)
+            {
+                case AngleCalculation.ANGLE_UP:
+                    ChangeAnimationState(animationStates.AnimAttackUp);
+                    break;
+                case AngleCalculation.ANGLE_RIGHT:
+                    ChangeAnimationState(animationStates.AnimAttackRight);
+                    break;
+                case AngleCalculation.ANGLE_DOWN:
+                    ChangeAnimationState(animationStates.AnimAttackDown);
+                    break;
+                case AngleCalculation.ANGLE_LEFT:
+                    ChangeAnimationState(animationStates.AnimAttackLeft);
+                    break;
+            }
+
+            return;
+        }
+
+        switch (facingDirection)
         {
             case AngleCalculation.ANGLE_UP:
                 if (playerMovement.isMoving) ChangeAnimationState(animationStates.AnimWalkUp);
@@ -95,8 +140,8 @@ public class PlayerAnimationHandler : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        AnimatePlayer();
+        ControlAnimation();
     }
 }
