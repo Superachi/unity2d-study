@@ -150,6 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d1a6a8fb6242f4893e3e412104b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anglePlayerToMouse: 0
+  cardinalPlayerToMouse: 0
+  fireButtonPressed: 0
 --- !u!114 &1529121682367756576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +178,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 64
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -209,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167c4691755a13f4c858de703e9739d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animWalkSpeed: 4
+  animWalkSpeed: 5
   animAttackSpeed: 10
   spritesIdleSide:
   - {fileID: -700633292, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}

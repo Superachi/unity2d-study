@@ -54,6 +54,11 @@ public class BulletBehaviour : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall")) Destroy(gameObject);
+    }
+
     void FixedUpdate()
     {
         rb2d.MovePosition(rb2d.position + moveDirection * moveSpeed * Time.fixedDeltaTime);

@@ -12,8 +12,8 @@ public class PlayerAnimationHandler : MonoBehaviour
     private Dictionary<animationStates, Sprite[]> spriteDictionary = new();
     private float facingDirection = AngleCalculation.ANGLE_RIGHT;
 
-    public float animWalkSpeed = 4f;
-    public float animAttackSpeed = 4f;
+    public float animWalkSpeed;
+    public float animAttackSpeed;
 
     public enum animationStates
     {

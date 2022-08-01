@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     // Movement
     public Vector2 moveDirection;
-    public float moveSpeed = 10f;
-    public float moveDegrees = 90;
+    public float moveSpeed;
+    public float moveDegrees;
     public bool isMoving = false;
 
     // Collision handling
