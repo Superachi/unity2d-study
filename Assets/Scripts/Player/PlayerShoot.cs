@@ -13,13 +13,13 @@ public class PlayerShoot : MonoBehaviour
     public void CreateBullet(Vector2 originPosition, Vector2 targetPosition)
     {
         GameObject bullet = Instantiate(bulletPrefab);
-        BulletMovement bulletMovement = bullet.GetComponent<BulletMovement>();
+        BulletBehaviour bulletBehaviour = bullet.GetComponent<BulletBehaviour>();
         Vector2 direction = targetPosition - originPosition;
 
         // Need to set the position of the bullet after setting its properties
         // Otherwise the projectile looks off for a single frame (wrong position/angle)
-        bulletMovement.SetBulletTrajectory(direction.normalized, 20f);
-        bulletMovement.SetBulletAesthetics(true, true);
+        bulletBehaviour.SetBulletTrajectory(direction.normalized, 20f);
+        bulletBehaviour.SetBulletAesthetics(true, true);
         bullet.transform.position = originPosition;
     }
 
