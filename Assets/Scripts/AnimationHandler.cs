@@ -5,10 +5,14 @@ using UnityEngine;
 // This class is used to handle a play a single animation, looping if required
 public class AnimationHandler : MonoBehaviour
 {
-    private Sprite[] spriteArray;
+    // These variables are public so they can be assigned via the Unity editor
+    // If not using the editor, use setAnimation() instead
+    public Sprite[] spriteArray;
+    public bool animateOnStart = false;
+    public float animSpeed;
+    public bool animIsLooping;
+
     private int animFrame;
-    private float animSpeed;
-    private bool animIsLooping;
     private int animFrameCount;
     private float animTimeRemaining;
     private SpriteRenderer spriteRenderer;
@@ -17,6 +21,7 @@ public class AnimationHandler : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (animateOnStart) setAnimation(spriteArray, 0, animSpeed, animIsLooping, false);
     }
 
     public void setAnimation(Sprite[] array, int startingFrame, float speed, bool loop, bool flipX)
