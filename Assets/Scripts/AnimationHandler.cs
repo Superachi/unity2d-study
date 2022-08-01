@@ -47,10 +47,9 @@ public class AnimationHandler : MonoBehaviour
         // Nothing to animate if we only have one frame or speed == 0
         // or if we reached the end of the array with !animIsLooping
         if (animFrameCount == 1 || animSpeed == 0) return;
-        if (animFrame == animFrameCount && !animIsLooping)
+        if (animFrame == animFrameCount - 1 && !animIsLooping)
         {
-            Sprite[] array = new Sprite[] { spriteRenderer.sprite };
-            setAnimation(array, 0, 0, false, spriteRenderer.flipX);
+            animSpeed = 0;
         }
 
         animTimeRemaining -= Time.fixedDeltaTime * animSpeed;

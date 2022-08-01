@@ -16,14 +16,15 @@ public class BulletBehaviour : MonoBehaviour
     public bool isFacingDirection = true;
     public bool isFacingDiagonally = false;
 
-    public void SetBulletTrajectory(Vector2 direction, float speed)
+    public void SetBulletTrajectory(Vector2 direction, float speed, float _lifetime)
     {
         rb2d = GetComponent<Rigidbody2D>();
         moveDirection = direction;
         moveSpeed = speed;
+        lifetime = _lifetime;
     }
 
-    public void SetBulletAesthetics(bool faceDir, bool faceDiag)
+    public void SetBulletOrientation(bool faceDir, bool faceDiag)
     {
         isFacingDirection = faceDir;
         isFacingDiagonally = faceDiag;
