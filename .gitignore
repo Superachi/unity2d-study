@@ -49,3 +49,7 @@ crashlytics-build.properties
 
 # Machine/user-specific
 UserSettings/
+
+# TextMeshPro
+Assets/TextMesh Pro/
+Assets/TextMesh Pro.meta
