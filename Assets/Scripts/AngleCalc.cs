@@ -46,4 +46,25 @@ public class AngleCalc : MonoBehaviour
     {
         return RadianToVector2(degree * Mathf.Deg2Rad);
     }
+
+    public static float Vector2ToDegrees(Vector2 vector)
+    {
+        return AngleBetweenPoints(Vector2.zero, vector);
+    }
+
+    public static float AngleCorrect(float angle)
+    {
+        return angle - 90;
+    }
+
+    public static Vector2 LengthDirection(float length, float direction, Vector2 startPoint = default)
+    {
+        Vector2 directionVector = DegreeToVector2(direction);
+        return LengthDirection(length, directionVector, startPoint);
+    }
+
+    public static Vector2 LengthDirection(float length, Vector2 direction, Vector2 startPoint = default)
+    {
+        return startPoint + (direction.normalized * length);
+    }
 }
