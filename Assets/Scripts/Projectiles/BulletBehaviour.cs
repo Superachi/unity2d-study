@@ -12,7 +12,7 @@ public class BulletBehaviour : MonoBehaviour
     public float lifetime = 3f;
 
     // Aesthetics
-    public float facingDirection = AngleCalculation.ANGLE_RIGHT;
+    public float facingDirection = AngleCalc.ANGLE_RIGHT;
     public bool isFacingDirection = true;
     public bool isFacingDiagonally = false;
 
@@ -35,7 +35,7 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (isFacingDirection)
         {
-            facingDirection = AngleCalculation.AngleBetweenPoints(Vector2.zero, moveDirection);
+            facingDirection = AngleCalc.AngleBetweenPoints(Vector2.zero, moveDirection);
         }
 
         float tempDirection = facingDirection - 90;

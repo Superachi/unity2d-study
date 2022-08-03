@@ -10,7 +10,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     private PlayerShoot playerShoot;
     private AnimationHandler animationHandler;
     private Dictionary<animationStates, Sprite[]> spriteDictionary = new();
-    private float facingDirection = AngleCalculation.ANGLE_RIGHT;
+    private float facingDirection = AngleCalc.ANGLE_RIGHT;
 
     public float animWalkSpeed;
     public float animAttackSpeed;
@@ -98,16 +98,16 @@ public class PlayerAnimationHandler : MonoBehaviour
         {
             switch (facingDirection)
             {
-                case AngleCalculation.ANGLE_UP:
+                case AngleCalc.ANGLE_UP:
                     ChangeAnimationState(animationStates.AnimAttackUp);
                     break;
-                case AngleCalculation.ANGLE_RIGHT:
+                case AngleCalc.ANGLE_RIGHT:
                     ChangeAnimationState(animationStates.AnimAttackRight);
                     break;
-                case AngleCalculation.ANGLE_DOWN:
+                case AngleCalc.ANGLE_DOWN:
                     ChangeAnimationState(animationStates.AnimAttackDown);
                     break;
-                case AngleCalculation.ANGLE_LEFT:
+                case AngleCalc.ANGLE_LEFT:
                     ChangeAnimationState(animationStates.AnimAttackLeft);
                     break;
             }
@@ -117,23 +117,23 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         switch (facingDirection)
         {
-            case AngleCalculation.ANGLE_UP:
+            case AngleCalc.ANGLE_UP:
                 if (playerMovement.isMoving) ChangeAnimationState(animationStates.AnimWalkUp);
                 else ChangeAnimationState(animationStates.AnimIdleUp);
                 break;
-            case AngleCalculation.ANGLE_RIGHT:
-            case AngleCalculation.ANGLE_UP_RIGHT:
-            case AngleCalculation.ANGLE_DOWN_RIGHT:
+            case AngleCalc.ANGLE_RIGHT:
+            case AngleCalc.ANGLE_UP_RIGHT:
+            case AngleCalc.ANGLE_DOWN_RIGHT:
                 if (playerMovement.isMoving) ChangeAnimationState(animationStates.AnimWalkRight);
                 else ChangeAnimationState(animationStates.AnimIdleRight);
                 break;
-            case AngleCalculation.ANGLE_DOWN:
+            case AngleCalc.ANGLE_DOWN:
                 if (playerMovement.isMoving) ChangeAnimationState(animationStates.AnimWalkDown);
                 else ChangeAnimationState(animationStates.AnimIdleDown);
                 break;
-            case AngleCalculation.ANGLE_LEFT:
-            case AngleCalculation.ANGLE_UP_LEFT:
-            case AngleCalculation.ANGLE_DOWN_LEFT:
+            case AngleCalc.ANGLE_LEFT:
+            case AngleCalc.ANGLE_UP_LEFT:
+            case AngleCalc.ANGLE_DOWN_LEFT:
                 if (playerMovement.isMoving) ChangeAnimationState(animationStates.AnimWalkLeft);
                 else ChangeAnimationState(animationStates.AnimIdleLeft);
                 break;

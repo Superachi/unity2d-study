@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AngleCalculation : MonoBehaviour
+public class AngleCalc : MonoBehaviour
 {
     // Based on this diagram http://academic.brooklyn.cuny.edu/geology/grocha/mapsdistancelatlong/directionlatlong.htm
     public const float NO_ANGLE = -1;

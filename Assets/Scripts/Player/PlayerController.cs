@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
 
         Vector2 mouseScreenPos = Input.mousePosition;
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        anglePlayerToMouse = AngleCalculation.AngleBetweenPoints(gameObject.transform.position, mouseWorldPos);
-        cardinalPlayerToMouse = AngleCalculation.AngleToCardinal(anglePlayerToMouse);
+        anglePlayerToMouse = AngleCalc.AngleBetweenPoints(gameObject.transform.position, mouseWorldPos);
+        cardinalPlayerToMouse = AngleCalc.AngleToCardinal(anglePlayerToMouse);
 
         if (Input.GetButton("Fire1")) {
             if (playerShoot.canShoot) playerShoot.Attack(gameObject.transform.position, mouseWorldPos, 0.15f);
