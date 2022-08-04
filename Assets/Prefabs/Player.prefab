@@ -179,11 +179,14 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 0
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  layerToFilter:
+    serializedVersion: 2
+    m_Bits: 64
   collisionOffset: 0.05
 --- !u!114 &1529121682367756580
 MonoBehaviour:
@@ -268,4 +271,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e527ac04bd94bf41af025c12d59ee06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityType: 0
+  health: 1
+  type: 0

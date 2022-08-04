@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Collision handling
     public ContactFilter2D moveFilter;
+    public LayerMask layerToFilter;
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public float collisionOffset = 0.05f;
 
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        moveFilter.SetLayerMask(layerToFilter);
     }
 
     private void FixedUpdate()
