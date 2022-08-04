@@ -72,6 +72,7 @@ public class BulletBehaviour : MonoBehaviour
     // Collision methods
     private void Hit(GameObject hitObject)
     {
+        if (hitObject.CompareTag("Bullet")) return;
         if (hitObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
