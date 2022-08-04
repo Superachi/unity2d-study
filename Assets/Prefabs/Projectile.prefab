@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -163,5 +163,5 @@ MonoBehaviour:
   - {fileID: 287642699, guid: 4ab7ad208f80ab344a162c1bef0e43fc, type: 3}
   - {fileID: -1247698582, guid: 4ab7ad208f80ab344a162c1bef0e43fc, type: 3}
   animateOnStart: 1
-  animSpeed: 15
+  animSpeed: 30
   animIsLooping: 0
