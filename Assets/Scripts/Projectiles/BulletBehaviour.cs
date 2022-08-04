@@ -6,6 +6,11 @@ public class BulletBehaviour : MonoBehaviour
 {
     private Rigidbody2D rb2d;
 
+    // Mechanics
+    public float damage = 1f;
+    public GameObject shooter;
+    private Creature shooterCreature;
+
     // Trajectory
     public Vector2 moveDirection = Vector2.right;
     public float moveSpeed = 20f;
@@ -16,7 +21,15 @@ public class BulletBehaviour : MonoBehaviour
     public bool isFacingDirection = true;
     public bool isFacingDiagonally = false;
 
-    public void SetBulletTrajectory(Vector2 direction, float speed, float _lifetime)
+    // Initialiser methods
+    public void SetMechanics(float _damage, GameObject _shooter)
+    {
+        damage = _damage;
+        shooter = _shooter;
+        shooterCreature = shooter.GetComponent<Creature>();
+    }
+
+    public void SetTrajectory(Vector2 direction, float speed, float _lifetime)
     {
         rb2d = GetComponent<Rigidbody2D>();
         moveDirection = direction;
@@ -24,12 +37,14 @@ public class BulletBehaviour : MonoBehaviour
         lifetime = _lifetime;
     }
 
-    public void SetBulletOrientation(bool faceDir, bool faceDiag)
+    public void SetOrientation(bool faceDir, bool faceDiag)
     {
         isFacingDirection = faceDir;
         isFacingDiagonally = faceDiag;
         RotateSprite();
     }
+
+    // Update methods
 
     private void RotateSprite()
     {
@@ -54,9 +69,26 @@ public class BulletBehaviour : MonoBehaviour
         }
     }
 
+    // Collision methods
+    private void Hit(GameObject hitObject)
+    {
+        if (hitObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Creature colliderCreature = hitObject.GetComponent<Creature>();
+        if (shooterCreature.type != colliderCreature.type)
+        {
+            colliderCreature.takeDamage(damage);
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall")) Destroy(gameObject);
+        Hit(collision.gameObject);
     }
 
     void FixedUpdate()
