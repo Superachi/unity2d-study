@@ -82,7 +82,7 @@ public class BulletBehaviour : MonoBehaviour
         Creature colliderCreature = hitObject.GetComponent<Creature>();
         if (shooterCreature.type != colliderCreature.type)
         {
-            colliderCreature.takeDamage(damage);
+            colliderCreature.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

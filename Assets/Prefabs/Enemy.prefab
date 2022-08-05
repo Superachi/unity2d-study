@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   type: 1
+  soundOnHit: {fileID: 8300000, guid: 1702796485a966144a59b574fdec0107, type: 3}
+  soundOnDeath: {fileID: 8300000, guid: d1fc52af07ee7c742a7e5958d86fe386, type: 3}
 --- !u!50 &-1001927834259056979
 Rigidbody2D:
   serializedVersion: 4

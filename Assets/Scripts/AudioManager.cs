@@ -16,23 +16,33 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.name = s.clip.name;
-            s.source.volume = 1f;
-            s.source.pitch = 1f;
         }
     }
 
     public static void PlaySound(string name, float volume = 1f, float pitch = 1f)
     {
-        AudioManager a = FindObjectOfType<AudioManager>();
-        Sound s = Array.Find(a.sounds, sound => sound.name == name);
-        if (s == null)
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        Sound sound = audioManager.FindSound(name, audioManager.sounds);
+        if (sound == null) return;
+
+        audioManager.Play(sound, volume * audioManager.globalVolume, pitch);
+    }
+
+    private Sound FindSound(string soundName, Sound[] soundArray)
+    {
+        Sound sound = Array.Find(soundArray, sound => sound.name == soundName);
+        if (sound == null)
         {
-            Debug.LogError($"AudioClip {name} not found (Array.Find returned {s}). Was the filename spelled correctly?");
-            return;
+            Debug.LogError($"AudioClip {name} not found. Is the specified name in the AudioManager's sound array?");
         }
 
-        s.source.volume = volume * a.globalVolume;
-        s.source.pitch = pitch;
-        s.source.Play();
+        return sound;
+    }
+
+    private void Play(Sound sound, float volume, float pitch)
+    {
+        sound.source.volume = volume;
+        sound.source.pitch = pitch;
+        sound.source.Play();
     }
 }
