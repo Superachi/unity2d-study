@@ -38,7 +38,7 @@ public class PlayerShoot : MonoBehaviour
 
         // Need to set the position of the bullet after setting its properties
         // Otherwise the projectile looks off for a single frame (wrong position/angle)
-        bullet.transform.position = AngleCalc.LengthDirection(0.5f, direction, originPosition);
+        bullet.transform.position = AngleCalc.LengthDirection(0.5f, direction, originPosition + Vector2.up);
 
         AudioManager.PlaySound("shoot", 0.5f);
     }
