@@ -86,7 +86,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         }
 
         bool flipX = currentState.ToString().Contains("Left");
-        animationHandler.setAnimation(spriteDictionary[currentState], 0, animSpeed, true, flipX);
+        animationHandler.SetAnimation(spriteDictionary[currentState], 0, animSpeed, true, flipX);
     }
 
     void ControlAnimation()

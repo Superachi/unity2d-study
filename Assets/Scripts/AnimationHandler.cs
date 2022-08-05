@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnimationHandler : MonoBehaviour
 {
     // These variables are public so they can be assigned via the Unity editor
-    // If not using the editor, use setAnimation() instead
+    // If not using the editor, use SetAnimation() instead
     public Sprite[] spriteArray;
     public bool animateOnStart = false;
     public float animSpeed;
@@ -21,10 +21,10 @@ public class AnimationHandler : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (animateOnStart) setAnimation(spriteArray, 0, animSpeed, animIsLooping, false);
+        if (animateOnStart) SetAnimation(spriteArray, 0, animSpeed, animIsLooping, false);
     }
 
-    public void setAnimation(Sprite[] array, int startingFrame, float speed, bool loop, bool flipX)
+    public void SetAnimation(Sprite[] array, int startingFrame, float speed, bool loop, bool flipX)
     {
         spriteArray = array;
         animFrameCount = spriteArray.Length;
