@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         cardinalPlayerToMouse = AngleCalc.AngleToCardinal(anglePlayerToMouse);
 
         if (Input.GetButton("Fire1")) {
-            if (playerShoot.canShoot) playerShoot.Attack(gameObject.transform.position, mouseWorldPos, 0.15f);
+            if (playerShoot.canShoot) playerShoot.Attack(gameObject.transform.position, mouseWorldPos, 0.2f);
             fireButtonPressed = true;
         } else
         {

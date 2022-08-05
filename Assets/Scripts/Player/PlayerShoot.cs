@@ -34,11 +34,13 @@ public class PlayerShoot : MonoBehaviour
         Vector2 direction = targetPosition - originPosition;
         bulletBehaviour.SetMechanics(1, gameObject);
         bulletBehaviour.SetTrajectory(direction.normalized, 20f, 0.3f);
-        bulletBehaviour.SetOrientation(true, false);
+        bulletBehaviour.SetOrientation(true, true);
 
         // Need to set the position of the bullet after setting its properties
         // Otherwise the projectile looks off for a single frame (wrong position/angle)
         bullet.transform.position = AngleCalc.LengthDirection(0.5f, direction, originPosition);
+
+        AudioManager.PlaySound("shoot", 0.5f);
     }
 
     // Update is called once per frame

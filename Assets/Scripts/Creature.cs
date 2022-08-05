@@ -15,17 +15,32 @@ public class Creature : MonoBehaviour
 
     public Types type;
 
+    public enum Sounds
+    {
+        attack,
+        hit,
+        death
+    }
+
+    public Dictionary<Sounds, AudioClip> soundDictionary = new();
+
     public void takeDamage(float damage)
     {
         health -= damage;
+
         if (health <= 0)
         {
             die();
+        }
+        else
+        {
+            AudioManager.PlaySound("NPC_Hit_2", 0.5f);
         }
     }
 
     private void die()
     {
+        AudioManager.PlaySound("NPC_Killed_14", 0.5f);
         Destroy(gameObject);
     }
 
