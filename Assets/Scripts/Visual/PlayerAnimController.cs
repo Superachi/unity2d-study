@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This class is used to determine what animation to play for a player character
-public class PlayerAnimationHandler : MonoBehaviour
+public class PlayerAnimController : MonoBehaviour
 {
     public GameObject playerParent;
 
@@ -45,7 +45,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     private PlayerController playerController;
     private PlayerMovement playerMovement;
     private PlayerShoot playerShoot;
-    private AnimationHandler animationHandler;
+    private AnimationPlayer animationHandler;
     private float facingDirection = AngleCalc.ANGLE_RIGHT;
 
     // Start is called before the first frame update
@@ -54,7 +54,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         playerController = playerParent.GetComponent<PlayerController>();
         playerMovement = playerParent.GetComponent<PlayerMovement>();
         playerShoot = playerParent.GetComponent<PlayerShoot>();
-        animationHandler = GetComponent<AnimationHandler>();
+        animationHandler = GetComponent<AnimationPlayer>();
         SpriteDictionaryInit();
     }
 

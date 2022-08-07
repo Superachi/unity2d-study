@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This class is used to handle a play a single animation, looping if required
-public class AnimationHandler : MonoBehaviour
+public class AnimationPlayer : MonoBehaviour
 {
     // These variables are public so they can be assigned via the Unity editor
     // If not using the editor, use SetAnimation() instead
