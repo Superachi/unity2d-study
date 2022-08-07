@@ -5,15 +5,7 @@ using UnityEngine;
 // This class is used to determine what animation to play for a player character
 public class PlayerAnimationHandler : MonoBehaviour
 {
-    private PlayerController playerController;
-    private PlayerMovement playerMovement;
-    private PlayerShoot playerShoot;
-    private AnimationHandler animationHandler;
-    private Dictionary<animationStates, Sprite[]> spriteDictionary = new();
-    private float facingDirection = AngleCalc.ANGLE_RIGHT;
-
-    public float animWalkSpeed;
-    public float animAttackSpeed;
+    public GameObject playerParent;
 
     public enum animationStates
     {
@@ -32,6 +24,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     }
 
     private animationStates currentState = animationStates.AnimIdleRight;
+    private Dictionary<animationStates, Sprite[]> spriteDictionary = new();
 
     public Sprite[] spritesIdleSide;
     public Sprite[] spritesIdleUp;
@@ -43,30 +36,42 @@ public class PlayerAnimationHandler : MonoBehaviour
     public Sprite[] spritesAttackUp;
     public Sprite[] spritesAttackDown;
 
+    [HideInInspector]
+    public float animWalkSpeed;
+
+    [HideInInspector]
+    public float animAttackSpeed;
+
+    private PlayerController playerController;
+    private PlayerMovement playerMovement;
+    private PlayerShoot playerShoot;
+    private AnimationHandler animationHandler;
+    private float facingDirection = AngleCalc.ANGLE_RIGHT;
+
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
-        playerMovement = GetComponent<PlayerMovement>();
-        playerShoot = GetComponent<PlayerShoot>();
+        playerController = playerParent.GetComponent<PlayerController>();
+        playerMovement = playerParent.GetComponent<PlayerMovement>();
+        playerShoot = playerParent.GetComponent<PlayerShoot>();
         animationHandler = GetComponent<AnimationHandler>();
         SpriteDictionaryInit();
     }
 
     void SpriteDictionaryInit()
     {
-        spriteDictionary.Add(animationStates.AnimIdleLeft,   spritesIdleSide);
-        spriteDictionary.Add(animationStates.AnimIdleRight,  spritesIdleSide);
-        spriteDictionary.Add(animationStates.AnimIdleUp,     spritesIdleUp);
-        spriteDictionary.Add(animationStates.AnimIdleDown,   spritesIdleDown);
-        spriteDictionary.Add(animationStates.AnimWalkLeft,   spritesWalkSide);
-        spriteDictionary.Add(animationStates.AnimWalkRight,  spritesWalkSide);
-        spriteDictionary.Add(animationStates.AnimWalkUp,     spritesWalkUp);
-        spriteDictionary.Add(animationStates.AnimWalkDown,   spritesWalkDown);
-        spriteDictionary.Add(animationStates.AnimAttackLeft,    spritesAttackSide);
-        spriteDictionary.Add(animationStates.AnimAttackRight,   spritesAttackSide);
-        spriteDictionary.Add(animationStates.AnimAttackUp,      spritesAttackUp);
-        spriteDictionary.Add(animationStates.AnimAttackDown,    spritesAttackDown);
+        spriteDictionary.Add(animationStates.AnimIdleLeft, spritesIdleSide);
+        spriteDictionary.Add(animationStates.AnimIdleRight, spritesIdleSide);
+        spriteDictionary.Add(animationStates.AnimIdleUp, spritesIdleUp);
+        spriteDictionary.Add(animationStates.AnimIdleDown, spritesIdleDown);
+        spriteDictionary.Add(animationStates.AnimWalkLeft, spritesWalkSide);
+        spriteDictionary.Add(animationStates.AnimWalkRight, spritesWalkSide);
+        spriteDictionary.Add(animationStates.AnimWalkUp, spritesWalkUp);
+        spriteDictionary.Add(animationStates.AnimWalkDown, spritesWalkDown);
+        spriteDictionary.Add(animationStates.AnimAttackLeft, spritesAttackSide);
+        spriteDictionary.Add(animationStates.AnimAttackRight, spritesAttackSide);
+        spriteDictionary.Add(animationStates.AnimAttackUp, spritesAttackUp);
+        spriteDictionary.Add(animationStates.AnimAttackDown, spritesAttackDown);
     }
 
     void ChangeAnimationState(animationStates newState)

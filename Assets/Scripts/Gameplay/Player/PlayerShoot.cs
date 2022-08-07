@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    private Rigidbody2D rb2d;
     private PlayerController playerController;
 
     public float cooldownRemaining;
@@ -15,7 +14,6 @@ public class PlayerShoot : MonoBehaviour
     
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
     }
 
@@ -38,7 +36,7 @@ public class PlayerShoot : MonoBehaviour
 
         // Need to set the position of the bullet after setting its properties
         // Otherwise the projectile looks off for a single frame (wrong position/angle)
-        bullet.transform.position = AngleCalc.LengthDirection(0.5f, direction, originPosition + Vector2.up);
+        bullet.transform.position = AngleCalc.LengthDirection(0.5f, direction, originPosition);
 
         AudioManager.PlaySound("shoot", 0.5f);
     }
