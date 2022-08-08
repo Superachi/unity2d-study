@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513718393900326115}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 4}
   m_ConstrainProportionsScale: 1
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0}
-  moveSpeed: 10
+  moveSpeed: 8
   moveDegrees: 0
   isMoving: 0
   moveFilter:
@@ -274,7 +274,7 @@ SpriteRenderer:
   m_SortingLayerID: -1952130003
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -700633292, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  m_Sprite: {fileID: -614997116, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -298,23 +298,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerParent: {fileID: 1513718393900326115}
-  animWalkSpeed: 5
-  animAttackSpeed: 10
   spritesIdleSide:
-  - {fileID: -700633292, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: 1675840603, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
   spritesIdleUp:
-  - {fileID: 1847153347, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: -536291874, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
   spritesIdleDown:
-  - {fileID: -794043594, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: -614997116, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
   spritesWalkSide:
-  - {fileID: 902218481, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
-  - {fileID: -932568923, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: 1917012335, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
+  - {fileID: 619907044, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
   spritesWalkUp:
-  - {fileID: -482404752, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
-  - {fileID: -2064054813, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: 1950004818, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
+  - {fileID: 1744498199, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
   spritesWalkDown:
-  - {fileID: -1469083541, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
-  - {fileID: 439944394, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  - {fileID: 341750333, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
+  - {fileID: -976193884, guid: 19d7e05025d93844394dc62fdbb72877, type: 3}
   spritesAttackSide:
   - {fileID: 1175800743, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
   - {fileID: 606954721, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
@@ -324,6 +322,8 @@ MonoBehaviour:
   spritesAttackDown:
   - {fileID: 1508185610, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
   - {fileID: 1470685241, guid: 70a924a9ebc3310488827f26e3a2d2b3, type: 3}
+  animWalkSpeed: 5
+  animAttackSpeed: 10
 --- !u!114 &8998054108251992895
 MonoBehaviour:
   m_ObjectHideFlags: 0
