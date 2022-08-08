@@ -7,7 +7,7 @@ public class PlayerShoot : MonoBehaviour
     private PlayerController playerController;
 
     public float cooldownRemaining;
-    public float cooldownSpeed;
+    public float cooldownPerShot;
     public GameObject bulletPrefab;
     public bool isShooting;
     public bool canShoot;
@@ -15,12 +15,13 @@ public class PlayerShoot : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+        cooldownPerShot = 0.3f;
     }
 
-    public void Attack(Vector2 originPosition, Vector2 targetPosition, float cooldown)
+    public void Attack(Vector2 originPosition, Vector2 targetPosition)
     {
         CreateBullet(originPosition, targetPosition);
-        cooldownRemaining = cooldown;
+        cooldownRemaining = cooldownPerShot;
         isShooting = true;
     }
 

@@ -87,7 +87,7 @@ public class PlayerAnimController : MonoBehaviour
         float animSpeed = animWalkSpeed;
         if (currentState.ToString().Contains("Attack"))
         {
-            animSpeed = animAttackSpeed;
+            animSpeed = (2 / playerShoot.cooldownPerShot); // animAttackSpeed;
         }
 
         bool flipX = currentState.ToString().Contains("Left");
