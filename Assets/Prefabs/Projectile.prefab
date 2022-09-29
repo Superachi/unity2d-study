@@ -158,7 +158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteArray:
-  - {fileID: 21300000, guid: 1781980d6ab4fc341951e7a53a343971, type: 3}
+  - {fileID: -827991348, guid: 1781980d6ab4fc341951e7a53a343971, type: 3}
+  - {fileID: 1083703349, guid: 1781980d6ab4fc341951e7a53a343971, type: 3}
+  - {fileID: 474831636, guid: 1781980d6ab4fc341951e7a53a343971, type: 3}
+  - {fileID: 1601832825, guid: 1781980d6ab4fc341951e7a53a343971, type: 3}
   animateOnStart: 1
-  animSpeed: 40
-  animIsLooping: 0
+  animSpeed: 0
+  animIsLooping: 1
